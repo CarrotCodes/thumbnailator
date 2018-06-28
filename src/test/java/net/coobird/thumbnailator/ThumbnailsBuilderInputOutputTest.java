@@ -5437,7 +5437,7 @@ public class ThumbnailsBuilderInputOutputTest
 		
 		// when
 		Thumbnails.of(f)
-			.size(100, 100)
+			.size(10, 10)
 			.toFile(f);
 		
 		// then
@@ -5473,7 +5473,7 @@ public class ThumbnailsBuilderInputOutputTest
 		
 		// when
 		Thumbnails.of(f)
-			.size(100, 100)
+			.size(10, 10)
 			.allowOverwrite(true)
 			.toFile(f);
 		
@@ -5551,7 +5551,7 @@ public class ThumbnailsBuilderInputOutputTest
 		
 		// when
 		Thumbnails.of(f)
-			.size(100, 100)
+			.size(10, 10)
 			.allowOverwrite(true)
 			.toFile(f.getAbsolutePath());
 		

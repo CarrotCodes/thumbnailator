@@ -50,6 +50,8 @@ public class ThumbnailParameter
 	 * should be used when creating the thumbnail.
 	 */
 	public static final float DEFAULT_QUALITY = Float.NaN;
+
+	public static final boolean SHOULD_USE_PROGRESSIVE_FORMAT = false;
 	
 	/**
 	 * A constant used to denote that the image type of the original image
@@ -129,6 +131,8 @@ public class ThumbnailParameter
 	 * of the output codec should be used.
 	 */
 	private final float outputQuality;
+
+	private final boolean shouldUseProgressiveFormat;
 	
 	/**
 	 * The image type of the {@code BufferedImage} used for the thumbnail.
@@ -262,6 +266,7 @@ public class ThumbnailParameter
 			String outputFormat,
 			String outputFormatType,
 			float outputQuality,
+			boolean shouldWriteProgressive,
 			int imageType,
 			List<ImageFilter> filters,
 			ResizerFactory resizerFactory,
@@ -295,6 +300,7 @@ public class ThumbnailParameter
 		}
 		
 		this.outputQuality = outputQuality;
+		this.shouldUseProgressiveFormat = shouldWriteProgressive;
 		this.imageType = imageType;
 		
 		// Creating a new ArrayList, as `filters` should be mutable as of 0.4.3.
@@ -431,6 +437,7 @@ public class ThumbnailParameter
 			String outputFormat,
 			String outputFormatType,
 			float outputQuality,
+			boolean shouldWriteProgressive,
 			int imageType,
 			List<ImageFilter> filters,
 			Resizer resizer,
@@ -447,6 +454,7 @@ public class ThumbnailParameter
 				outputFormat,
 				outputFormatType,
 				outputQuality,
+				shouldWriteProgressive,
 				imageType,
 				filters,
 				new FixedResizerFactory(resizer),
@@ -544,6 +552,7 @@ public class ThumbnailParameter
 			String outputFormat,
 			String outputFormatType,
 			float outputQuality,
+			boolean shouldWriteProgressive,
 			int imageType,
 			List<ImageFilter> filters,
 			Resizer resizer,
@@ -560,6 +569,7 @@ public class ThumbnailParameter
 				outputFormat,
 				outputFormatType,
 				outputQuality,
+				shouldWriteProgressive,
 				imageType,
 				filters,
 				new FixedResizerFactory(resizer),
@@ -651,6 +661,7 @@ public class ThumbnailParameter
 			String outputFormat,
 			String outputFormatType,
 			float outputQuality,
+			boolean shouldWriteProgressive,
 			int imageType,
 			List<ImageFilter> filters,
 			ResizerFactory resizerFactory,
@@ -667,6 +678,7 @@ public class ThumbnailParameter
 				outputFormat,
 				outputFormatType,
 				outputQuality,
+				shouldWriteProgressive,
 				imageType,
 				filters,
 				resizerFactory,
@@ -765,6 +777,7 @@ public class ThumbnailParameter
 			String outputFormat,
 			String outputFormatType,
 			float outputQuality,
+			boolean shouldWriteProgressive,
 			int imageType,
 			List<ImageFilter> filters,
 			ResizerFactory resizerFactory,
@@ -781,6 +794,7 @@ public class ThumbnailParameter
 				outputFormat,
 				outputFormatType,
 				outputQuality,
+				shouldWriteProgressive,
 				imageType,
 				filters,
 				resizerFactory,
@@ -911,6 +925,10 @@ public class ThumbnailParameter
 	public float getOutputQuality()
 	{
 		return outputQuality;
+	}
+
+	public boolean getShouldUseProgressiveFormat() {
+		return this.shouldUseProgressiveFormat;
 	}
 
 	/**

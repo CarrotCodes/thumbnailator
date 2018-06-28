@@ -353,6 +353,14 @@ public class FileImageSink extends AbstractImageSink<File>
 				writeParam.setCompressionQuality(param.getOutputQuality());
 			}
 		}
+
+		if (writeParam.canWriteProgressive() && param != null) {
+			if (param.getShouldUseProgressiveFormat()) {
+				writeParam.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
+			} else {
+				writeParam.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
+			}
+		}
 		
 		/*
 		 * Here, an explicit FileOutputStream is being created, as using a

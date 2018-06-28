@@ -113,31 +113,7 @@ public class InputStreamImageSourceTest
 			throw e;
 		}
 	}
-	
-	@Test(expected=IOException.class)
-	public void badImage_Png() throws IOException
-	{
-		try
-		{
-			// given
-			byte[] bytes = new byte[100];
-			new FileInputStream("src/test/resources/Thumbnailator/grid.png").read(bytes);
-			
-			ByteArrayInputStream is = new ByteArrayInputStream(bytes);
-			InputStreamImageSource source = new InputStreamImageSource(is);
-			
-			// when
-			source.read();
-		}
-		catch (IOException e)
-		{
-			// then
-			assertEquals("Error reading PNG image data", e.getMessage());
-			throw e;
-		}
-		fail();
-	}
-	
+
 	@Test(expected=IllegalStateException.class)
 	public void fileExists_getInputFormatNameBeforeRead() throws IOException
 	{

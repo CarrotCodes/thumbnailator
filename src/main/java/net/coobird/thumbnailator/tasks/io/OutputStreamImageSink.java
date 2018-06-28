@@ -131,6 +131,14 @@ public class OutputStreamImageSink extends AbstractImageSink<OutputStream>
 				writeParam.setCompressionQuality(param.getOutputQuality());
 			}
 		}
+
+		if (writeParam.canWriteProgressive() && param != null) {
+			if (param.getShouldUseProgressiveFormat()) {
+				writeParam.setProgressiveMode(ImageWriteParam.MODE_DEFAULT);
+			} else {
+				writeParam.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
+			}
+		}
 		
 		ImageOutputStream ios = ImageIO.createImageOutputStream(os);
 		

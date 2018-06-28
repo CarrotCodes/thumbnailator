@@ -717,6 +717,7 @@ instance.asFiles("path/to/thumbnail");
 			OUTPUT_FORMAT("outputFormat"),
 			OUTPUT_FORMAT_TYPE("outputFormatType"),
 			OUTPUT_QUALITY("outputQuality"),
+            SHOULD_USE_PROGRESSIVE_FORMAT("shouldUseProgressiveFormat"),
 			RESIZER("resizer"),
 			SOURCE_REGION("sourceRegion"),
 			RESIZER_FACTORY("resizerFactory"),
@@ -823,6 +824,7 @@ instance.asFiles("path/to/thumbnail");
 		private String outputFormat = ThumbnailParameter.DETERMINE_FORMAT;
 		private String outputFormatType = ThumbnailParameter.DEFAULT_FORMAT_TYPE;
 		private float outputQuality = ThumbnailParameter.DEFAULT_QUALITY;
+		private boolean shouldUseProgressiveFormat = ThumbnailParameter.SHOULD_USE_PROGRESSIVE_FORMAT;
 		
 		private ScalingMode scalingMode = ScalingMode.PROGRESSIVE_BILINEAR;
 		private AlphaInterpolation alphaInterpolation = AlphaInterpolation.DEFAULT;
@@ -1620,6 +1622,12 @@ Thumbnails.of(image)
 			outputQuality = quality;
 			return this;
 		}
+
+		public Builder<T> shouldUseProgressiveFormat(boolean shouldUseProgressiveFormat) {
+		    updateStatus(Properties.SHOULD_USE_PROGRESSIVE_FORMAT, Status.ALREADY_SET);
+		    shouldUseProgressiveFormat = shouldUseProgressiveFormat;
+		    return this;
+        }
 		
 		/**
 		 * Sets the output quality of the compression algorithm used to
@@ -2181,6 +2189,7 @@ watermark(Positions.CENTER, image, opacity);
 						outputFormat,
 						outputFormatType,
 						outputQuality,
+                        shouldUseProgressiveFormat,
 						imageTypeToUse,
 						filterPipeline.getFilters(),
 						resizerFactory,
@@ -2199,6 +2208,7 @@ watermark(Positions.CENTER, image, opacity);
 						outputFormat,
 						outputFormatType,
 						outputQuality,
+						shouldUseProgressiveFormat,
 						imageTypeToUse,
 						filterPipeline.getFilters(),
 						resizerFactory,

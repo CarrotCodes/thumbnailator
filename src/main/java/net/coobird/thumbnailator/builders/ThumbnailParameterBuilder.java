@@ -66,6 +66,7 @@ public final class ThumbnailParameterBuilder
 	private int imageType = ThumbnailParameter.DEFAULT_IMAGE_TYPE;
 	private boolean keepAspectRatio = true;
 	private float thumbnailQuality = ThumbnailParameter.DEFAULT_QUALITY;
+	private boolean thumbnailShouldUseProgressiveFormat = ThumbnailParameter.SHOULD_USE_PROGRESSIVE_FORMAT;
 	private String thumbnailFormat = ThumbnailParameter.ORIGINAL_FORMAT;
 	private String thumbnailFormatType = ThumbnailParameter.DEFAULT_FORMAT_TYPE;
 	private List<ImageFilter> filters = Collections.emptyList();
@@ -224,6 +225,12 @@ public final class ThumbnailParameterBuilder
 		return this;
 	}
 
+	public ThumbnailParameterBuilder shouldUseProgressiveFormat(boolean shouldUseProgressiveFormat)
+	{
+		this.thumbnailShouldUseProgressiveFormat = shouldUseProgressiveFormat;
+		return this;
+	}
+
 	/**
 	 * Sets the output format of the thumbnail.
 	 * 
@@ -372,6 +379,7 @@ public final class ThumbnailParameterBuilder
 					thumbnailFormat,
 					thumbnailFormatType,
 					thumbnailQuality,
+					thumbnailShouldUseProgressiveFormat,
 					imageType,
 					filters,
 					resizerFactory,
@@ -389,6 +397,7 @@ public final class ThumbnailParameterBuilder
 					thumbnailFormat,
 					thumbnailFormatType,
 					thumbnailQuality,
+					thumbnailShouldUseProgressiveFormat,
 					imageType,
 					filters,
 					resizerFactory,
